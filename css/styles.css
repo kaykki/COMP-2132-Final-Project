@@ -12,3 +12,13 @@ body {
     font-family: 'Karla', sans-serif;
     font-family: 'Space Grotesk', sans-serif;
 }
+
+main {
+    /* background-image: url("../images/patricks_house.png"); */
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+}
