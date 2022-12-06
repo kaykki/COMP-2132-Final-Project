@@ -13,12 +13,47 @@ body {
     font-family: 'Space Grotesk', sans-serif;
 }
 
-main {
-    /* background-image: url("../images/patricks_house.png"); */
+nav {
+    background-color: #594545;
+    padding: 10px;
+    text-align: center;
+}
+
+.mainContainer {
     position: relative;
-    display: grid;
     place-items: center;
     width: 90%;
     margin: auto;
-    padding: 20px;
+}
+
+.popUp {
+    width: inherit;
+    height: inherit;
+    display: grid;
+    place-items: center;
+    position: absolute;
+    background-color: #594545;
+    border-radius: 10px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    padding: 20px 0;
+}
+
+.board div {
+    background-color: #594545;
+}
+
+.dices {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr;
+}
+
+.dices img {
+    width: 100px;
+    height: 100px;
 }

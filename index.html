@@ -11,13 +11,60 @@
         <link rel="icon" type="images/x-icon" href="images/favicon.ico">
     </head>
     <body>
-        <main>
-            <nav>
+        <nav>
+            <h1>Dice Game</h1>
+        </nav>
+        <main class="mainContainer">
 
-            </nav>
-            <section>
-                <div id="keyboard"></div>
-            </section>
+            <!-- <div id="popUp" class="popUp">
+                <div>
+                    <h1>Dice Game</h1>
+                    <a>❓</a>
+                </div>
+                
+                <div>
+                    <label for="playerName">Player Name:</label>
+                    <input type="text" id="playerName">                    
+                </div>
+                
+                <div>
+                    <input type="button" value="Play">
+                </div>
+            </div> -->
+
+            <h1>Round 0</h1>
+
+            <section class="board">
+                <div class="player">
+                    <h1>Player</h1>
+                    <h1>Your Dice</h1>
+                    <div id="playerDices" class="dices">
+                        <img src="images/dices/rolling-dices.png">
+                        <img src="images/dices/rolling-dices.png">
+                    </div>
+                    <div>
+                        <div>
+                            <h1>Current Score: <span id="playerCurrentScore">0</span></h1>
+                            <h1>Total Score: <span id="playerFinalScore">0</span></h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cpu">
+                    <h1>CPU</h1>
+                    <h1>CPU's Dice</h1>
+                    <div id="cpuDices" class="dices">
+                        <img src="images/dices/rolling-dices.png">
+                        <img src="images/dices/rolling-dices.png">
+                    </div>
+                    <div>
+                        <h1>Current Score: <span id="cpuCurrentScore">0</span></h1>
+                        <h1>Total Score: <span id="cpuFinalScore">0</span></h1>
+                    </div>
+                </div>
+                <input type="button" value="Roll" id="roll">
+                <input type="button" value="New Game" id="newGame">
+            </section> 
         </main>
         <script src="scripts/jquery-3.6.1.min.js"></script>
         <script src="scripts/main.js"></script>
