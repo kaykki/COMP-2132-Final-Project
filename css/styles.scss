@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla&family=Space+Grotesk&display=swap');
+
+/* https://colorhunt.co/palette/fff8ea9e7676815b5b594545 the color pallete used */
+
+$border_color: #594545;
+$text_color: #FFF8EA;
+$background-color: #815B5B;
+
+/* For rounded double border boxes */
+@mixin rounded-double-border-box ($thickness, $radius) {
+    border: $border_color double $thickness;
+    border-radius: $radius;
+}
+
+body {
+    margin: 0 auto;
+    min-height: 100vh;
+    background: url(../images/body.jpg);
+    justify-content: center;
+    align-items: center;
+    color: $text_color;
+    font-family: 'Karla', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+nav {
+    background-color: #FFF8EA;
+    color: #594545;
+    width: 15%;
+    @include rounded-double-border-box(5px, (0 0 10px 10px));
+    border-top: none;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+}
+
+input:hover {
+    cursor: pointer;
+}
+
+.help {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    background: url(../images/help.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    @include rounded-double-border-box(5px, 50%);
+    width: 70px;
+    height: 70px;
+    text-align: center;
+}
+
+.help img {
+    width: 30px;
+}
+
+.help:hover {
+    cursor: pointer;
+}
+
+.instructions {
+    position: absolute;
+    display: none;
+    width: 30%;
+    top: 11%;
+    right: 9%;
+    padding: 10px;
+    background-color: #FFF8EA;
+    @include rounded-double-border-box(5px, 20px);
+    color: #594545;
+}
+
+.startUp {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 20% 1fr;
+    place-items: center;
+    background-color: #594545;
+    background: url(../images/popUp.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.playerInfo {
+    display: grid;
+    place-items: center;
+    grid-gap: 10px;
+    width: 10%;
+    padding: 10px;
+    background-color: $background-color;
+    @include rounded-double-border-box(5px, 20px);
+}
+
+.title {
+    padding: 10px;
+    font-size: 40px;
+    background-color: $background-color;
+    @include rounded-double-border-box(5px, 20px);
+}
+
+.title h1 {
+    margin: 0;
+}
+
+.play {
+    width: 80%;
+    background-color: $background-color;
+    color: $text_color;
+    @include rounded-double-border-box(2px, 10px);
+}
+
+.play:hover {
+    background-color: #594545;
+}
+
+.mainContainer {
+    display: grid;
+    grid-template-rows: 10% 1fr 10%;
+    place-items: center;
+    width: 90%;
+    margin: auto;
+    padding: 15% 0 0 0;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    grid-gap: 20px;
+    padding: 20px 0;
+}
+
+.player, .cpu {
+    background-color: #FFF8EA;
+    color: #594545;
+    @include rounded-double-border-box(10px, 20px);
+    padding: 10px;
+    text-align: center;
+}
+
+.dices {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr;
+}
+
+.dices img {
+    width: 100px;
+    height: 100px;
+}
+
+.rollButton {
+    display: grid;
+    place-items: center;
+    width: 100%;
+}
+
+.rollButton input{
+    width: 20%;
+    height: 50px;
+    background-color: $background-color;
+    color: $text_color;
+    @include rounded-double-border-box(2px, 10px);
+}
+
+.rollButton input:hover {
+    background-color: #594545;
+}
+
+
+.results {
+    position: absolute;
+    display: grid;
+    grid-gap: 10px;
+    place-items: center;
+    width: 50%;
+    top: 10%;
+    left: 25%;
+    background-color: #FFF8EA;
+    color: #594545;
+    @include rounded-double-border-box(10px, 30px);
+    padding: 10px;
+    opacity: 0;
+}
+
+.results img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.results input {
+    width: 30%;
+    background-color: $background-color;
+    color: #FFF8EA;
+    @include rounded-double-border-box(2px, 10px);
+}
+
+.results input:hover {
+    background-color: #594545;
+}
