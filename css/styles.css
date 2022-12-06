@@ -37,7 +37,7 @@ nav {
     margin: auto;
 }
 
-.popUp {
+.startUp {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -52,13 +52,13 @@ nav {
 .board {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    background: url(../images/casino_table.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     grid-gap: 20px;
     padding: 20px 0;
 }
 
-.board div {
-    background-color: #594545;
-}
 
 .dices {
     display: grid;
@@ -69,4 +69,22 @@ nav {
 .dices img {
     width: 100px;
     height: 100px;
+}
+
+.results {
+    position: absolute;
+    display: grid;
+    grid-gap: 10px;
+    place-items: center;
+    width: 50%;
+    top: 10%;
+    left: 25%;
+    background-color: #594545;
+    border-radius: 20px;
+    padding: 10px;
+    opacity: 0;
+}
+
+.results img {
+    width: 100%;
 }

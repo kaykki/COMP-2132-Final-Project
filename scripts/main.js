@@ -17,7 +17,9 @@ const defaultDices = `images/dices/rolling-dices.png`;
 
 const $roll    = $(`#roll`);
 const $newGame = $(`#newGame`);
+const $results = $(`#results`);
 
+let finished = false;
 let currentRound = 1;
 let currentRoll  = 1;
 const finalRoll  = 3;
@@ -26,12 +28,19 @@ let playerFinalScore = 0;
 let cpuFinalScore    = 0;
 
 $play.click(function(){
-    $(`.popUp`).fadeOut(1000, 0)
+    $(`.startUp`).fadeOut(2000, 0)
 });
 
-
-
 $roll.click(function(){
+    if(!finished){
+        roll();
+    }
+});
+$newGame.click(function(){
+    returnDefault();
+})
+
+function roll(){
     if(currentRoll <= finalRoll){
         const player = rollPairOfDice();
         const cpu    = rollPairOfDice();
@@ -40,12 +49,12 @@ $roll.click(function(){
 
         $playerDiceImgs.each(function(img){
 
-            $(this).attr(`src`, displayDice(player[img]));
+            $(this).attr(`src`, `images/dices/dice_${player[img]}.png`);
         })
 
         $cpuDiceImgs.each(function(img){
 
-            $(this).attr(`src`, displayDice(cpu[img]));
+            $(this).attr(`src`, `images/dices/dice_${cpu[img]}.png`);
         })
 
         playerFinalScore += calculateScore(player);
@@ -60,12 +69,24 @@ $roll.click(function(){
 
         currentRound++;
         currentRoll++;
-    }
-});
+    } 
 
-$newGame.click(function(){
-    returnDefault();
-})
+    if (finalRoll < currentRoll) {
+        finished = true;
+        if (playerFinalScore > cpuFinalScore) {
+            $results.fadeTo(2000,1)
+
+            $(`#results h1`).text("You Win!");
+            $(`#results img`).attr(`src`, `images/won.gif`);
+
+        } else {
+            $results.fadeTo(2000,1)
+
+            $(`#results h1`).text("You Lose!");
+            $(`#results img`).attr(`src`, `images/lost.gif`);
+        }
+    }
+}
 
 
 /**
@@ -77,15 +98,6 @@ function rollPairOfDice (){
     const secondDice = Math.floor(Math.random() * 6) + 1;
 
     return [firstDice, secondDice];
-}
-
-/**
- * Generates an img element for the desired dice
- * @param {*} dice 
- * @returns img element of the desired dice
- */
-function displayDice ( dice = 0) {
-    return `images/dices/dice_${dice}.png`
 }
 
 /**
@@ -122,7 +134,10 @@ function returnDefault(){
         $(this).attr(`src`, defaultDices);
     })
 
+    finished = false;
     $(`span`).text(0);
+
+    $results.fadeOut(1000,0)
 }
 
 
