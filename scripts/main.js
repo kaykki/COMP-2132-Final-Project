@@ -19,16 +19,18 @@ $help.hover(function(){
     $(`#instructions`).css(`display`, `none`);
 });
 
+// Initial Landing Page
 const $playerName = $(`#playerName`);
-
-const $play = $(`#play`);
+const $play       = $(`#play`);
 
 $play.click(function(){
     if($playerName.val().length != 0) {
         $(`.userName`).text(`${$playerName.val()}`);
     }
-});
 
+    start.play();
+    $(`.startUp`).slideUp(600);
+});
 
 const $round = $(`#round`);
 
@@ -48,7 +50,7 @@ const $roll    = $(`#roll`);
 const $newGame = $(`#newGame`);
 const $results = $(`#results`);
 
-let finished = false;
+let finished     = false;
 let currentRound = 1;
 let currentRoll  = 1;
 const finalRoll  = 3;
@@ -56,20 +58,20 @@ const finalRoll  = 3;
 let playerFinalScore = 0;
 let cpuFinalScore    = 0;
 
-$play.click(function(){
-    start.play();
-    $(`.startUp`).slideUp(600);
-});
 
 $roll.click(function(){
     if(!finished){
         roll();
     }
 });
+
 $newGame.click(function(){
-    returnDefault();
+    reset();
 })
 
+/**
+ * Rolls the dices and displays the scores of each players
+ */
 function roll(){
     if(currentRoll <= finalRoll){
         const player = rollPairOfDice();
@@ -120,7 +122,6 @@ function roll(){
     }
 }
 
-
 /**
  * Rolls a pair of dices
  * @returns an array that contains 2 random integers 1 -> 6
@@ -134,7 +135,7 @@ function rollPairOfDice (){
 
 /**
  * Calculates the score of the given diceroll
- * @param {*} diceRolls 
+ * @param {*} diceRolls user inputted array
  * @returns the score of the diceroll
  */
 function calculateScore ( diceRolls = []){
@@ -147,15 +148,16 @@ function calculateScore ( diceRolls = []){
     }
 }
 
-
 /**
- * Return all the games parameters to default
+ * Reset all the games parameters
  */
-function returnDefault(){
+function reset(){
     currentRound = 1;
-    currentRoll = 1;
+    currentRoll  = 1;
+
     playerFinalScore = 0;
     cpuFinalScore    = 0;
+
     $playerDiceImgs.each(function(img){
 
         $(this).attr(`src`, defaultDices);
@@ -168,8 +170,5 @@ function returnDefault(){
 
     finished = false;
     $(`span`).text(0);
-
     $results.fadeOut(1000,0)
 }
-
-

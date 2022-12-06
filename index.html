@@ -17,7 +17,7 @@
         <div class="title">
             <h1>Dice Game</h1>
         </div>
-        <div>
+        <div class="playerInfo">
             <label for="playerName">Player Name:</label>
             <input type="text" id="playerName">
             <input type="button" value="Play" id="play" class="play">
@@ -33,7 +33,7 @@
             <li>Click "Roll Dice" to start</li>
             <li>To advance to the next round, click the "Roll Dice" button again</li>
             <li>After three rounds, the final score is calculate, and it will show the result</li>
-            <li>Click "New Game" to play again</li>
+            <li>Click "Play Again" to play again</li>
         </ul>
         <h1>Rules :</h1>
         <ul>
@@ -55,32 +55,29 @@
         <section class="board">
             <div class="player">
                 <h1 class="userName">Player</h1>
-                <h1>Your Dice</h1>
+                <h3>Your Dice:</h3>
                 <div id="playerDices" class="dices">
                     <img src="images/dices/rolling-dices.png">
                     <img src="images/dices/rolling-dices.png">
                 </div>
                 <div>
-                    <div>
-                        <h1>Current Score: <span id="playerCurrentScore">0</span></h1>
-                        <h1>Total Score: <span id="playerFinalScore">0</span></h1>
-                    </div>
+                    <h3>Current Score: <span id="playerCurrentScore">0</span></h3>
+                    <h3>Total Score: <span id="playerFinalScore">0</span></h3>
                 </div>
             </div>
 
             <div class="cpu">
                 <h1>CPU</h1>
-                <h1>CPU's Dice</h1>
+                <h3>CPU's Dice:</h3>
                 <div id="cpuDices" class="dices">
                     <img src="images/dices/rolling-dices.png">
                     <img src="images/dices/rolling-dices.png">
                 </div>
                 <div>
-                    <h1>Current Score: <span id="cpuCurrentScore">0</span></h1>
-                    <h1>Total Score: <span id="cpuFinalScore">0</span></h1>
+                    <h3>Current Score: <span id="cpuCurrentScore">0</span></h3>
+                    <h3>Total Score: <span id="cpuFinalScore">0</span></h3>
                 </div>
             </div>
-            
         </section>
 
         <div class="rollButton">
@@ -90,7 +87,7 @@
         <div id="results" class="results">
             <h1></h1>
             <img src="">
-            <input type="button" value="New Game" id="newGame">
+            <input type="button" value="Play Again" id="newGame">
         </div>
     </main>
     <script src="scripts/jquery-3.6.1.min.js"></script>
