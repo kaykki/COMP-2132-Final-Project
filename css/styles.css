@@ -14,27 +14,51 @@ body {
 }
 
 nav {
-    background-color: #594545;
+    background-color: #FFF8EA;
+    color: #594545;
+    width: 15%;
+    border: #594545 double 5px;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    margin: 0 auto;
     padding: 10px;
+    text-align: center;
+    justify-content: center;
+}
+
+.help {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    background: url(../images/help.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border: #594545 double 5px;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
     text-align: center;
 }
 
-.title {
+.help img {
+    width: 30px;
+}
+
+.help:hover {
+    cursor: pointer;
+}
+
+.instructions {
+    position: absolute;
+    display: none;
+    width: 30%;
+    top: 11%;
+    right: 9%;
     padding: 10px;
-    font-size: 90px;
-    background-color: #594545;
-    border: #815B5B double 10px;
-    border-radius: 10px;
-}
-
-.title h1 {
-    margin: 0;
-}
-
-.mainContainer {
-    place-items: center;
-    width: 90%;
-    margin: auto;
+    background-color: #FFF8EA;
+    border: #594545 double 5px;
+    border-radius: 20px;
+    color: #594545;
 }
 
 .startUp {
@@ -42,6 +66,7 @@ nav {
     width: 100%;
     height: 100%;
     display: grid;
+    grid-template-rows: 20% 1fr;
     place-items: center;
     background-color: #594545;
     background: url(../images/popUp.png);
@@ -49,16 +74,53 @@ nav {
     background-size: 100% 100%;
 }
 
+.title {
+    padding: 10px;
+    font-size: 40px;
+    background-color: #594545;
+    color: #FFF8EA;
+    border: #815B5B double 10px;
+    border-radius: 10px;
+}
+
+.play {
+    width: 100%;
+    background-color: #594545;
+    color: #FFF8EA;
+}
+
+
+.title h1 {
+    margin: 0;
+}
+
+.mainContainer {
+    display: grid;
+    grid-template-rows: 10% 1fr 10%;
+    place-items: center;
+    width: 90%;
+    margin: auto;
+    padding: 15% 0 0 0;
+}
+
+
+
 .board {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background: url(../images/casino_table.jpg);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    grid-gap: 20px;
     grid-gap: 20px;
     padding: 20px 0;
 }
 
+.player, .cpu {
+    background-color: #FFF8EA;
+    color: #594545;
+    border: #594545 double 10px;
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+}
 
 .dices {
     display: grid;
@@ -70,6 +132,18 @@ nav {
     width: 100px;
     height: 100px;
 }
+
+.rollButton {
+    display: grid;
+    place-items: center;
+    width: 100%;
+}
+
+.rollButton input{
+    width: 30%;
+    height: 100%;
+}
+
 
 .results {
     position: absolute;

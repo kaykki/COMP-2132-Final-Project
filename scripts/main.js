@@ -1,5 +1,34 @@
+// Audio
+const start = new Audio(`audio/start.mp3`);
+const help  = new Audio(`audio/help.mp3`);
+const lost  = new Audio(`audio/lost.mp3`);
+const won   = new Audio(`audio/won.mp3`);
+
+start.volume = 0.1;
+help.volume  = 0.2;
+lost.volume  = 0.2;
+won.volume   = 0.2;
+
+// PopUp help button
+const $help = $(`#help`);
+
+$help.hover(function(){
+    help.play();
+    $(`#instructions`).css(`display`, `block`);
+}, function() {
+    $(`#instructions`).css(`display`, `none`);
+});
+
 const $playerName = $(`#playerName`);
+
 const $play = $(`#play`);
+
+$play.click(function(){
+    if($playerName.val().length != 0) {
+        $(`.userName`).text(`${$playerName.val()}`);
+    }
+});
+
 
 const $round = $(`#round`);
 
@@ -28,7 +57,8 @@ let playerFinalScore = 0;
 let cpuFinalScore    = 0;
 
 $play.click(function(){
-    $(`.startUp`).fadeOut(2000, 0)
+    start.play();
+    $(`.startUp`).slideUp(600);
 });
 
 $roll.click(function(){
@@ -44,7 +74,7 @@ function roll(){
     if(currentRoll <= finalRoll){
         const player = rollPairOfDice();
         const cpu    = rollPairOfDice();
-        
+
         $round.text(currentRound);
 
         $playerDiceImgs.each(function(img){
@@ -76,12 +106,14 @@ function roll(){
         if (playerFinalScore > cpuFinalScore) {
             $results.fadeTo(2000,1)
 
+            won.play();
             $(`#results h1`).text("You Win!");
             $(`#results img`).attr(`src`, `images/won.gif`);
 
         } else {
             $results.fadeTo(2000,1)
 
+            lost.play();
             $(`#results h1`).text("You Lose!");
             $(`#results img`).attr(`src`, `images/lost.gif`);
         }

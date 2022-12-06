@@ -1,75 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="UTF-8">
-        <title>Dice Game</title>
-    
-        <!-- StyleSheet -->
-        <link rel="stylesheet" href="css/styles.css">
-        <!-- Favicon -->
-        <link rel="icon" type="images/x-icon" href="images/favicon.ico">
-    </head>
-    <body>
-        <div id="startUp" class="startUp">
-            <div class="title">
-                <h1>Dice Game</h1>
-            </div>
-            
-            <div>
-                <label for="playerName">Player Name:</label>
-                <input type="text" id="playerName">                    
-            </div>
-            
-            <div>
-                <input type="button" value="Play" id="play">
-            </div>
-        </div>
-        <nav>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Dice Game</title>
+
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Favicon -->
+    <link rel="icon" type="images/x-icon" href="images/favicon.ico">
+</head>
+
+<body>
+    <div id="startUp" class="startUp">
+        <div class="title">
             <h1>Dice Game</h1>
-        </nav>
-        <main class="mainContainer">
+        </div>
+        <div>
+            <label for="playerName">Player Name:</label>
+            <input type="text" id="playerName">
+            <input type="button" value="Play" id="play" class="play">
+        </div>
+    </div>
 
-            <h1>Round: <span id="round">0</span></h1>
+    <div id="help" class="help">
+        <img src="images/question_mark.png">
+    </div>
+    <div id="instructions" class="instructions">
+        <h1>How To Play :</h1>
+        <ul>
+            <li>Click "Roll Dice" to start</li>
+            <li>To advance to the next round, click the "Roll Dice" button again</li>
+            <li>After three rounds, the final score is calculate, and it will show the result</li>
+            <li>Click "New Game" to play again</li>
+        </ul>
+        <h1>Rules :</h1>
+        <ul>
+            <li>Each round, both you and your oponent will roll a pair of dice</li>
+            <li>The sum of your dice is your score for that round</li>
+            <li>If anyone rolls a "1," then your points for that round is "0"</li>
+            <li>If anyone rolls a double (ex. 4 and 4), then your score that round is doubled (ex. score = 16)</li>
+            <li>The player with the most accumulated score wins</li>
+        </ul>
+    </div>
 
-            <section class="board">
-                <div class="player">
-                    <h1>Player</h1>
-                    <h1>Your Dice</h1>
-                    <div id="playerDices" class="dices">
-                        <img src="images/dices/rolling-dices.png">
-                        <img src="images/dices/rolling-dices.png">
-                    </div>
+    <nav>
+        <h1>Dice Game</h1>
+    </nav>
+    <main class="mainContainer">
+
+        <h1>Round: <span id="round">0</span></h1>
+
+        <section class="board">
+            <div class="player">
+                <h1 class="userName">Player</h1>
+                <h1>Your Dice</h1>
+                <div id="playerDices" class="dices">
+                    <img src="images/dices/rolling-dices.png">
+                    <img src="images/dices/rolling-dices.png">
+                </div>
+                <div>
                     <div>
-                        <div>
-                            <h1>Current Score: <span id="playerCurrentScore">0</span></h1>
-                            <h1>Total Score: <span id="playerFinalScore">0</span></h1>
-                        </div>
+                        <h1>Current Score: <span id="playerCurrentScore">0</span></h1>
+                        <h1>Total Score: <span id="playerFinalScore">0</span></h1>
                     </div>
                 </div>
+            </div>
 
-                <div class="cpu">
-                    <h1>CPU</h1>
-                    <h1>CPU's Dice</h1>
-                    <div id="cpuDices" class="dices">
-                        <img src="images/dices/rolling-dices.png">
-                        <img src="images/dices/rolling-dices.png">
-                    </div>
-                    <div>
-                        <h1>Current Score: <span id="cpuCurrentScore">0</span></h1>
-                        <h1>Total Score: <span id="cpuFinalScore">0</span></h1>
-                    </div>
+            <div class="cpu">
+                <h1>CPU</h1>
+                <h1>CPU's Dice</h1>
+                <div id="cpuDices" class="dices">
+                    <img src="images/dices/rolling-dices.png">
+                    <img src="images/dices/rolling-dices.png">
                 </div>
-                <input type="button" value="Roll" id="roll">
-                
-            </section>
-            <div id="results" class="results">
-                <h1></h1>
-                <img src="">
-                <input type="button" value="New Game" id="newGame">
-            </div> 
-        </main>
-        <script src="scripts/jquery-3.6.1.min.js"></script>
-        <script src="scripts/main.js"></script>
-    </body>
+                <div>
+                    <h1>Current Score: <span id="cpuCurrentScore">0</span></h1>
+                    <h1>Total Score: <span id="cpuFinalScore">0</span></h1>
+                </div>
+            </div>
+            
+        </section>
+
+        <div class="rollButton">
+            <input type="button" value="Roll Dice" id="roll">
+        </div>
+
+        <div id="results" class="results">
+            <h1></h1>
+            <img src="">
+            <input type="button" value="New Game" id="newGame">
+        </div>
+    </main>
+    <script src="scripts/jquery-3.6.1.min.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+
 </html>
