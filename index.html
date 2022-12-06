@@ -3,7 +3,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
-        <title>Final Project</title>
+        <title>Dice Game</title>
     
         <!-- StyleSheet -->
         <link rel="stylesheet" href="css/styles.css">
@@ -11,28 +11,28 @@
         <link rel="icon" type="images/x-icon" href="images/favicon.ico">
     </head>
     <body>
+        <div id="popUp" class="popUp">
+            <div class="title">
+                <h1>Dice Game</h1>
+            </div>
+            
+            <div>
+                <label for="playerName">Player Name:</label>
+                <input type="text" id="playerName">                    
+            </div>
+            
+            <div>
+                <input type="button" value="Play" id="play">
+            </div>
+        </div>
         <nav>
             <h1>Dice Game</h1>
         </nav>
         <main class="mainContainer">
 
-            <!-- <div id="popUp" class="popUp">
-                <div>
-                    <h1>Dice Game</h1>
-                    <a>❓</a>
-                </div>
-                
-                <div>
-                    <label for="playerName">Player Name:</label>
-                    <input type="text" id="playerName">                    
-                </div>
-                
-                <div>
-                    <input type="button" value="Play">
-                </div>
-            </div> -->
+            
 
-            <h1>Round 0</h1>
+            <h1>Round: <span id="round">0</span></h1>
 
             <section class="board">
                 <div class="player">

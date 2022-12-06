@@ -4,8 +4,8 @@
 
 body {
     margin: 0 auto;
-    height: 100vh;
-    background-color: #815B5B;
+    min-height: 100vh;
+    background: url(../images/body.jpg);
     justify-content: center;
     align-items: center;
     color: #FFF8EA;
@@ -19,21 +19,34 @@ nav {
     text-align: center;
 }
 
+.title {
+    padding: 10px;
+    font-size: 90px;
+    background-color: #594545;
+    border: #815B5B double 10px;
+    border-radius: 10px;
+}
+
+.title h1 {
+    margin: 0;
+}
+
 .mainContainer {
-    position: relative;
     place-items: center;
     width: 90%;
     margin: auto;
 }
 
 .popUp {
-    width: inherit;
-    height: inherit;
+    position: absolute;
+    width: 100%;
+    height: 100%;
     display: grid;
     place-items: center;
-    position: absolute;
     background-color: #594545;
-    border-radius: 10px;
+    background: url(../images/popUp.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .board {

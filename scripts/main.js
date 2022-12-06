@@ -1,3 +1,8 @@
+const $playerName = $(`#playerName`);
+const $play = $(`#play`);
+
+const $round = $(`#round`);
+
 const $playerDices        = $(`#playerDices`);
 const $playerDiceImgs     = $(`#playerDices img`);
 const $playerCurrentScore = $(`#playerCurrentScore`);
@@ -13,19 +18,26 @@ const defaultDices = `images/dices/rolling-dices.png`;
 const $roll    = $(`#roll`);
 const $newGame = $(`#newGame`);
 
-let   currentRoll = 1;
-const finalRoll   = 3;
+let currentRound = 1;
+let currentRoll  = 1;
+const finalRoll  = 3;
 
 let playerFinalScore = 0;
 let cpuFinalScore    = 0;
 
+$play.click(function(){
+    $(`.popUp`).fadeOut(1000, 0)
+});
+
+
 
 $roll.click(function(){
     if(currentRoll <= finalRoll){
-
         const player = rollPairOfDice();
         const cpu    = rollPairOfDice();
         
+        $round.text(currentRound);
+
         $playerDiceImgs.each(function(img){
 
             $(this).attr(`src`, displayDice(player[img]));
@@ -46,7 +58,7 @@ $roll.click(function(){
         $cpuFinalScore.text(`${cpuFinalScore}`);
 
 
-
+        currentRound++;
         currentRoll++;
     }
 });
@@ -96,7 +108,10 @@ function calculateScore ( diceRolls = []){
  * Return all the games parameters to default
  */
 function returnDefault(){
+    currentRound = 1;
     currentRoll = 1;
+    playerFinalScore = 0;
+    cpuFinalScore    = 0;
     $playerDiceImgs.each(function(img){
 
         $(this).attr(`src`, defaultDices);
@@ -108,8 +123,6 @@ function returnDefault(){
     })
 
     $(`span`).text(0);
-
-
 }
 
 
