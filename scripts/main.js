@@ -1,13 +1,15 @@
 // Audio
-const start = new Audio(`audio/start.mp3`);
-const help  = new Audio(`audio/help.mp3`);
-const lost  = new Audio(`audio/lost.mp3`);
-const won   = new Audio(`audio/won.mp3`);
+const start    = new Audio(`audio/start.mp3`);
+const help     = new Audio(`audio/help.mp3`);
+const diceRoll = new Audio(`audio/dice_roll.mp3`);
+const lost     = new Audio(`audio/lost.mp3`);
+const won      = new Audio(`audio/won.mp3`);
 
-start.volume = 0.1;
-help.volume  = 0.2;
-lost.volume  = 0.2;
-won.volume   = 0.2;
+start.volume    = 0.1;
+help.volume     = 0.2;
+diceRoll.volume = 0.2;
+lost.volume     = 0.2;
+won.volume      = 0.2;
 
 // PopUp help button
 const $help = $(`#help`);
@@ -29,16 +31,22 @@ $play.click(function(){
     }
 
     start.play();
-    $(`.startUp`).slideUp(600);
+
+    setTimeout(function(){
+        $(`.startUp`).fadeOut(animationDelay);
+    }, animationDelay);
 });
 
+const animationDelay = 500;
 const $round = $(`#round`);
 
+// Player Variables
 const $playerDices        = $(`#playerDices`);
 const $playerDiceImgs     = $(`#playerDices img`);
 const $playerCurrentScore = $(`#playerCurrentScore`);
 const $playerFinalScore   = $(`#playerFinalScore`);
 
+// CPU Variables
 const $cpuDices        = $(`#cpuDices`);
 const $cpuDiceImgs     = $(`#cpuDices img`);
 const $cpuCurrentScore = $(`#cpuCurrentScore`);
@@ -58,7 +66,6 @@ const finalRoll  = 3;
 let playerFinalScore = 0;
 let cpuFinalScore    = 0;
 
-
 $roll.click(function(){
     if(!finished){
         roll();
@@ -73,6 +80,8 @@ $newGame.click(function(){
  * Rolls the dices and displays the scores of each players
  */
 function roll(){
+    diceRoll.play();
+
     if(currentRoll <= finalRoll){
         const player = rollPairOfDice();
         const cpu    = rollPairOfDice();
@@ -80,12 +89,10 @@ function roll(){
         $round.text(currentRound);
 
         $playerDiceImgs.each(function(img){
-
             $(this).attr(`src`, `images/dices/dice_${player[img]}.png`);
         })
 
         $cpuDiceImgs.each(function(img){
-
             $(this).attr(`src`, `images/dices/dice_${cpu[img]}.png`);
         })
 
@@ -106,18 +113,22 @@ function roll(){
     if (finalRoll < currentRoll) {
         finished = true;
         if (playerFinalScore > cpuFinalScore) {
-            $results.fadeTo(2000,1)
+            setTimeout(function(){
+                $results.fadeTo(animationDelay,1)
 
-            won.play();
-            $(`#results h1`).text("You Win!");
-            $(`#results img`).attr(`src`, `images/won.gif`);
+                won.play();
+                $(`#results h1`).text("You Win!");
+                $(`#results img`).attr(`src`, `images/won.gif`);
+            }, animationDelay);
 
         } else {
-            $results.fadeTo(2000,1)
+            setTimeout(function(){
+                $results.fadeTo(animationDelay,1)
 
-            lost.play();
-            $(`#results h1`).text("You Lose!");
-            $(`#results img`).attr(`src`, `images/lost.gif`);
+                lost.play();
+                $(`#results h1`).text("You Lose!");
+                $(`#results img`).attr(`src`, `images/lost.gif`);
+            }, animationDelay);   
         }
     }
 }
@@ -159,12 +170,10 @@ function reset(){
     cpuFinalScore    = 0;
 
     $playerDiceImgs.each(function(img){
-
         $(this).attr(`src`, defaultDices);
     })
 
     $cpuDiceImgs.each(function(img){
-
         $(this).attr(`src`, defaultDices);
     })
 
