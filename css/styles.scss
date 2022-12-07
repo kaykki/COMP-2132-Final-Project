@@ -2,6 +2,9 @@
 
 /* https://colorhunt.co/palette/fff8ea9e7676815b5b594545 the color pallete used */
 
+$popUp_text_color: #594545;
+$popUp_background_color: #FFF8EA;
+
 $border_color: #594545;
 $text_color: #FFF8EA;
 $background-color: #815B5B;
@@ -24,8 +27,8 @@ body {
 }
 
 nav {
-    background-color: #FFF8EA;
-    color: #594545;
+    background-color: $popUp_background_color;
+    color: $popUp_text_color;
     width: 15%;
     @include rounded-double-border-box(5px, (0 0 10px 10px));
     border-top: none;
@@ -67,9 +70,9 @@ input:hover {
     top: 11%;
     right: 9%;
     padding: 10px;
-    background-color: #FFF8EA;
+    background-color: $popUp_background_color;
     @include rounded-double-border-box(5px, 20px);
-    color: #594545;
+    color: $popUp_text_color;
 }
 
 .startUp {

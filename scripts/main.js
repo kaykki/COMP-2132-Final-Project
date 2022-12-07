@@ -63,9 +63,6 @@ let currentRound = 1;
 let currentRoll  = 1;
 const finalRoll  = 3;
 
-let playerFinalScore = 0;
-let cpuFinalScore    = 0;
-
 $roll.click(function(){
     if(!finished){
         roll();
@@ -76,6 +73,37 @@ $newGame.click(function(){
     reset();
 })
 
+class Player {
+    constructor() {
+        this.currentScore = 0;
+        this.finalScore   = 0;
+    }
+
+    updateCurrentScore( score ){
+        this.currentScore = score;
+    }
+
+    updateFinalScore( score ){
+        this.finalScore += score;
+    }
+
+    setFinalScore( score ) {
+        this.finalScore = score;
+    }
+
+    rollPairOfDice (){
+        const firstDice  = Math.floor(Math.random() * 6) + 1;
+        const secondDice = Math.floor(Math.random() * 6) + 1;
+    
+        return [firstDice, secondDice];
+    }
+} 
+
+// New User Objects
+const user = new Player();
+const cpu  = new Player();
+
+
 /**
  * Rolls the dices and displays the scores of each players
  */
@@ -83,28 +111,30 @@ function roll(){
     diceRoll.play();
 
     if(currentRoll <= finalRoll){
-        const player = rollPairOfDice();
-        const cpu    = rollPairOfDice();
-
         $round.text(currentRound);
 
+        const userDices = user.rollPairOfDice();
+        const cpuDices  = cpu.rollPairOfDice();
+
+        user.updateCurrentScore(calculateScore(userDices));
+        user.updateFinalScore(calculateScore(userDices));
+
+        cpu.updateCurrentScore(calculateScore(cpuDices));
+        cpu.updateFinalScore(calculateScore(cpuDices));
+
+        $playerCurrentScore.text(`${user.currentScore}`);
+        $playerFinalScore.text(`${user.finalScore}`);
+
+        $cpuCurrentScore.text(`${cpu.currentScore}`);
+        $cpuFinalScore.text(`${cpu.finalScore}`);
+
         $playerDiceImgs.each(function(img){
-            $(this).attr(`src`, `images/dices/dice_${player[img]}.png`);
+            $(this).attr(`src`, `images/dices/dice_${userDices[img]}.png`);
         })
 
         $cpuDiceImgs.each(function(img){
-            $(this).attr(`src`, `images/dices/dice_${cpu[img]}.png`);
+            $(this).attr(`src`, `images/dices/dice_${cpuDices[img]}.png`);
         })
-
-        playerFinalScore += calculateScore(player);
-        cpuFinalScore    += calculateScore(cpu);
-
-        $playerCurrentScore.text(`${calculateScore(player)}`);
-        $playerFinalScore.text(`${playerFinalScore}`);
-
-        $cpuCurrentScore.text(`${calculateScore(cpu)}`);
-        $cpuFinalScore.text(`${cpuFinalScore}`);
-
 
         currentRound++;
         currentRoll++;
@@ -112,7 +142,7 @@ function roll(){
 
     if (finalRoll < currentRoll) {
         finished = true;
-        if (playerFinalScore > cpuFinalScore) {
+        if (user.finalScore > cpu.finalScore) {
             setTimeout(function(){
                 $results.fadeTo(animationDelay,1)
 
@@ -131,17 +161,6 @@ function roll(){
             }, animationDelay);   
         }
     }
-}
-
-/**
- * Rolls a pair of dices
- * @returns an array that contains 2 random integers 1 -> 6
- */
-function rollPairOfDice (){
-    const firstDice  = Math.floor(Math.random() * 6) + 1;
-    const secondDice = Math.floor(Math.random() * 6) + 1;
-
-    return [firstDice, secondDice];
 }
 
 /**
@@ -166,8 +185,8 @@ function reset(){
     currentRound = 1;
     currentRoll  = 1;
 
-    playerFinalScore = 0;
-    cpuFinalScore    = 0;
+    user.setFinalScore(0);
+    cpu.setFinalScore(0);
 
     $playerDiceImgs.each(function(img){
         $(this).attr(`src`, defaultDices);
